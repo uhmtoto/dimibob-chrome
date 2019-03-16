@@ -1,0 +1,14 @@
+{
+  "name": "디미고 급식 위젯",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "디미고 급식 위젯",
+  "homepage_url": "https://github.com/uhmtoto/dimibob-chrome",
+  "browser_action": {
+    "default_title": "디미밥",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "https://*/*"
+  ]
+}

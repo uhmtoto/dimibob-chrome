@@ -78,3 +78,10 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+widget.crx
+widget.pem
+
+**/.DS_Store
+
+package-lock.json
