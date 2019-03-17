@@ -44,8 +44,8 @@ export default {
     },
     nextMealKind () {
       const hour = Number(this.moment().format('HH'))
-      if (hour < 9) return 0
-      else if (hour < 13) return 1
+      if (hour < 8) return 0
+      else if (hour < 14) return 1
       else return 2
     }
   },
