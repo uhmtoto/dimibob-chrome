@@ -84,3 +84,5 @@ widget.pem
 **/.DS_Store
 
 package-lock.json
+
+dist/
