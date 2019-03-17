@@ -19,8 +19,6 @@
     <div
       class="footer"
     >
-      <span>18HD 엄서훈</span>
-      <br>
       <span>API by dimigoIN</span>
     </div>
   </div>
