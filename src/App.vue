@@ -13,13 +13,12 @@
       :key="kind"
       v-for="(kind, index) in list"
     >
-      {{ kind }}
+      <div
+        class="meal__title"
+      >
+        {{ kind }}
+      </div>
       {{ indexedMeal[index] ? indexedMeal[index] : '급식 정보가 없습니다' }}
-    </div>
-    <div
-      class="footer"
-    >
-      <span>API by dimigoIN</span>
     </div>
   </div>
 </template>
@@ -82,20 +81,22 @@ h2 {
 .meal {
   color: #606060;
   word-break: keep-all;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
   
   &__now {
     color: black !important;
-    font-size: 130%;
+    font-size: 125%;
+  }
+
+  &__title {
     font-weight: bold;
   }
 }
 
 .footer {
   padding-top: 20px;
-}
-
-a {
-  color: black;
-  text-decoration: none;
 }
 </style>
