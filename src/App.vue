@@ -57,6 +57,7 @@ export default {
 <template>
   <div
     id="app"
+    class="container"
   >
     <h2
       class="title"
@@ -112,6 +113,10 @@ export default {
 
   min-width: 400px;
   width: auto;
+}
+
+.container {
+  margin: 0 auto;
 }
 
 .title {
