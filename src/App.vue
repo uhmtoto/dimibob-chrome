@@ -1,5 +1,5 @@
 <script>
-import { mealList, mealTime, timetable, classTime, subject } from './data.json'
+import { mealList, mealTime, timetable, classTime, subjectList } from './data.json'
 
 export default {
   name: 'app',
@@ -9,7 +9,7 @@ export default {
       meal: {},
       mealList,
       timetable,
-      subject
+      subjectList
     }
   },
 
@@ -76,7 +76,7 @@ export default {
         }"
         :key="index"
       >
-        {{ subject[data] }}
+        {{ subjectList[data] }}
       </span>
     </div>
 
