@@ -1,3 +1,50 @@
+<script>
+import { list, timetable, subject } from './data.json'
+
+export default {
+  name: 'app',
+
+  data () {
+    return {
+      meal: {},
+      list,
+      timetable,
+      subject
+    }
+  },
+
+  computed: {
+    indexedMeal () {
+      return [this.meal.breakfast,
+        this.meal.lunch,
+        this.meal.dinner]
+    },
+    nextMealKind () {
+      const hour = Number(this.moment().format('HH'))
+      if (hour < 8) return 0
+      else if (hour < 14) return 1
+      else return 2
+    },
+    todayDay () {
+      // return number starts from 0
+      return this.moment().day() - 1
+    }
+  },
+
+  async created() {
+    const date = this.moment().format('YYYYMMDD')
+    await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`)
+      .then(result => {
+        this.meal = result.data
+      })
+    Object.keys(this.meal).forEach(key => {
+      this.meal[key] = this.meal[key].replace(/\//gi, ', ')
+    })
+    this.time
+  }
+}
+</script>
+
 <template>
   <div
     id="app"
@@ -5,8 +52,20 @@
     <h2
       class="title"
     >
-      {{ `${moment().format('MM월 DD일')}의 디미밥` }}
+      {{ `${moment().format('MM월 DD일')}의 디미고 1학년 5반!` }}
     </h2>
+
+    <div
+      class="timetable"
+    >
+      <span
+        v-for="(data, index) in timetable[todayDay]"
+        :key="index"
+      >
+        {{ subject.CA }}
+      </span>
+    </div>
+
     <div
       :class="{
         'meal': true,
@@ -27,46 +86,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { list } from './data.json'
-
-export default {
-  name: 'app',
-
-  data () {
-    return {
-      meal: {},
-      list
-    }
-  },
-
-  computed: {
-    indexedMeal () {
-      return [this.meal.breakfast,
-        this.meal.lunch,
-        this.meal.dinner]
-    },
-    nextMealKind () {
-      const hour = Number(this.moment().format('HH'))
-      if (hour < 8) return 0
-      else if (hour < 14) return 1
-      else return 2
-    }
-  },
-
-  async created() {
-    const date = this.moment().format('YYYYMMDD')
-    await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`)
-      .then(result => {
-        this.meal = result.data
-      })
-    Object.keys(this.meal).forEach(key => {
-      this.meal[key] = this.meal[key].replace(/\//gi, ', ')
-    })
-  }
-}
-</script>
 
 <style lang="scss">
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
@@ -106,7 +125,8 @@ export default {
   }
 }
 
-.footer {
-  padding-top: 20px;
+.timetable {
+  
 }
+
 </style>

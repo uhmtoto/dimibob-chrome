@@ -12,7 +12,7 @@
     ["CA", "MA", "EN", "DR", "SO", "PR", "MU"]
   ],
   "subject": {
-    "CA": {
+    "KO": {
       "korean": "국어",
       "english": "Korean"
     },
@@ -55,6 +55,10 @@
     "CL": {
       "korean": "동아리",
       "english": "Club Activity"
+    },
+    "CA": {
+      "korean": "컴퓨터 시스템 일반",
+      "english": "Computer Architecture"
     }
   }
 }
