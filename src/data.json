@@ -1,5 +1,19 @@
 {
-  "list": [
+  "mealTime": [
+    8,
+    14,
+    20
+  ],
+  "classTime": [
+    950,
+    1050,
+    1150,
+    1250,
+    1440,
+    1540,
+    1640
+  ],
+  "mealList": [
     "아침",
     "점심",
     "저녁"
@@ -12,53 +26,18 @@
     ["CA", "MA", "EN", "DR", "SO", "PR", "MU"]
   ],
   "subject": {
-    "KO": {
-      "korean": "국어",
-      "english": "Korean"
-    },
-    "HI": {
-      "korean": "역사",
-      "english": "History"
-    },
-    "MU": {
-      "korean": "음악",
-      "english": "Music"
-    },
-    "PR": {
-      "korean": "프로그래밍",
-      "english": "Programming"
-    },
-    "SC": {
-      "korean": "과학",
-      "english": "Science"
-    },
-    "MA": {
-      "korean": "수학",
-      "english": "Math"
-    },
-    "SO": {
-      "korean": "사회",
-      "english": "Social Studies"
-    },
-    "EN": {
-      "korean": "영어",
-      "english": "English"
-    },
-    "CH": {
-      "korean": "창의적 체험활동",
-      "english": "Creative Experience Activity"
-    },
-    "DR": {
-      "korean": "진로",
-      "english": "Career"
-    },
-    "CL": {
-      "korean": "동아리",
-      "english": "Club Activity"
-    },
-    "CA": {
-      "korean": "컴퓨터 시스템 일반",
-      "english": "Computer Architecture"
-    }
+    "KO": "국어",
+    "HI": "역사",
+    "MU": "음악",
+    "PR": "프로그래밍",
+    "SC": "과학",
+    "MA": "수학",
+    "SO": "사회",
+    "EN": "영어",
+    "CH": "창체",
+    "DR": "진로",
+    "CL": "동아리",
+    "CA": "컴일",
+    "PE": "체육"
   }
 }

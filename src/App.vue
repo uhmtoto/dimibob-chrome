@@ -1,5 +1,5 @@
 <script>
-import { list, timetable, subject } from './data.json'
+import { mealList, mealTime, timetable, classTime, subject } from './data.json'
 
 export default {
   name: 'app',
@@ -7,7 +7,7 @@ export default {
   data () {
     return {
       meal: {},
-      list,
+      mealList,
       timetable,
       subject
     }
@@ -21,18 +21,28 @@ export default {
     },
     nextMealKind () {
       const hour = Number(this.moment().format('HH'))
-      if (hour < 8) return 0
-      else if (hour < 14) return 1
-      else return 2
+      const result = mealTime.findIndex(data => {
+        return hour < data
+      })
+      
+      return result === -1 ? mealTime.length - 1 : result
     },
     todayDay () {
-      // return number starts from 0
       return this.moment().day() - 1
+    },
+    nextClass () {
+      const time = Number(this.moment().format('HHMM'))
+      const result = classTime.findIndex(data => {
+        return time < data
+      })
+      
+      return result === -1 ? classTime.length - 1 : result
     }
   },
 
   async created() {
     const date = this.moment().format('YYYYMMDD')
+    
     await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`)
       .then(result => {
         this.meal = result.data
@@ -40,7 +50,6 @@ export default {
     Object.keys(this.meal).forEach(key => {
       this.meal[key] = this.meal[key].replace(/\//gi, ', ')
     })
-    this.time
   }
 }
 </script>
@@ -60,9 +69,13 @@ export default {
     >
       <span
         v-for="(data, index) in timetable[todayDay]"
+        :class="{
+          'subject': true,
+          'subject__now': index === nextClass
+        }"
         :key="index"
       >
-        {{ subject.CA }}
+        {{ subject[data] }}
       </span>
     </div>
 
@@ -72,7 +85,8 @@ export default {
         'meal__now': index === nextMealKind
       }"
       :key="kind"
-      v-for="(kind, index) in list"
+      v-for="(kind, index) in mealList"
+      v-show="index >= nextMealKind"
     >
       <div
         :class="{
@@ -126,7 +140,27 @@ export default {
 }
 
 .timetable {
+  padding-bottom: 20px;
+}
+
+.subject {
+  color: #606060;
+  word-break: keep-all;
+  font-weight: 350;
+  font-size: 110%;
+
+  &:not(:last-child) {
+    border-right: 1px solid #606060;
+  }
+
+  &:not(:first-child) {
+    padding-left: 5px;
+  }
   
+  &__now {
+    color: black !important;
+    font-weight: 370;
+  }
 }
 
 </style>
