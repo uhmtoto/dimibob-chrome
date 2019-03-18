@@ -2,7 +2,9 @@
   <div
     id="app"
   >
-    <h2>
+    <h2
+      class="title"
+    >
       {{ `${moment().format('MM월 DD일')}의 디미밥` }}
     </h2>
     <div
@@ -14,7 +16,10 @@
       v-for="(kind, index) in list"
     >
       <div
-        class="meal__title"
+        :class="{
+          'meal__title': true,
+          'meal__title__now': index === nextMealKind
+        }"
       >
         {{ kind }}
       </div>
@@ -64,8 +69,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+
 #app {
-  font-family: sans-serif;
+  font-family: 'Spoqa Han Sans', 'Spoqa Han Sans KR', 'Sans-serif';
   font-size: 120%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -74,14 +81,14 @@ export default {
   width: auto;
 }
 
-h2 {
-  font-weight: normal;
+.title {
+  font-weight: 400;
 }
 
 .meal {
   color: #606060;
   word-break: keep-all;
-
+  font-weight: 350;
   &:not(:last-child) {
     margin-bottom: 10px;
   }
@@ -92,7 +99,10 @@ h2 {
   }
 
   &__title {
-    font-weight: bold;
+    
+    &__now {
+      font-weight: 400;
+    }
   }
 }
 
