@@ -3,5 +3,58 @@
     "아침",
     "점심",
     "저녁"
-  ]
+  ],
+  "timetable": [
+    ["CA", "HI", "MU", "PR", "KO", "SC", "MA"],
+    ["SC", "SO", "KO", "PE", "PR", "MA", "MU"],
+    ["EN", "SO", "SC", "HI", "CL", "CH"],
+    ["EN", "HI", "KO", "PE", "CA", "DR", "PR"],
+    ["CA", "MA", "EN", "DR", "SO", "PR", "MU"]
+  ],
+  "subject": {
+    "CA": {
+      "korean": "국어",
+      "english": "Korean"
+    },
+    "HI": {
+      "korean": "역사",
+      "english": "History"
+    },
+    "MU": {
+      "korean": "음악",
+      "english": "Music"
+    },
+    "PR": {
+      "korean": "프로그래밍",
+      "english": "Programming"
+    },
+    "SC": {
+      "korean": "과학",
+      "english": "Science"
+    },
+    "MA": {
+      "korean": "수학",
+      "english": "Math"
+    },
+    "SO": {
+      "korean": "사회",
+      "english": "Social Studies"
+    },
+    "EN": {
+      "korean": "영어",
+      "english": "English"
+    },
+    "CH": {
+      "korean": "창의적 체험활동",
+      "english": "Creative Experience Activity"
+    },
+    "DR": {
+      "korean": "진로",
+      "english": "Career"
+    },
+    "CL": {
+      "korean": "동아리",
+      "english": "Club Activity"
+    }
+  }
 }
