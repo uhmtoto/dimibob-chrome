@@ -30058,7 +30058,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(5);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7c6a0d07_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_402f1b70_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
 function injectStyle (ssrContext) {
   __webpack_require__(143)
 }
@@ -30078,7 +30078,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7c6a0d07_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_402f1b70_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -30099,7 +30099,7 @@ var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(146)("3a22f98d", content, true, {});
+var update = __webpack_require__(146)("454bec65", content, true, {});
 
 /***/ }),
 /* 144 */
@@ -30110,7 +30110,7 @@ exports = module.exports = __webpack_require__(145)(false);
 exports.push([module.i, "@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);", ""]);
 
 // module
-exports.push([module.i, "#app{font-family:Spoqa Han Sans,Spoqa Han Sans KR,\"Sans-serif\";font-size:120%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-width:400px;width:auto}.container{margin:0 auto}.title{font-weight:400}.meal{color:#606060;word-break:keep-all;font-weight:350}.meal:not(:last-child){margin-bottom:10px}.meal__now{color:#000!important;font-size:125%}.meal__title__now{font-weight:400}.timetable{padding-bottom:20px}.subject{color:#606060;word-break:keep-all;font-weight:350;font-size:110%}.subject:not(:last-child){border-right:1px solid #606060}.subject:not(:first-child){padding-left:5px}.subject__now{color:#000!important;font-weight:370}", ""]);
+exports.push([module.i, "#app{font-family:Spoqa Han Sans,Spoqa Han Sans KR,\"Sans-serif\";font-size:120%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-width:400px;width:auto}.container{margin:0 auto}.title{font-weight:400}.meal{color:#606060;word-break:keep-all;font-weight:350}.meal:not(:last-child){margin-bottom:10px}.meal__now{color:#000!important;font-size:125%}.meal__title__now{font-weight:400}.timetable{padding-bottom:20px}.subject{color:#606060;word-break:keep-all;font-weight:350;font-size:110%}.subject:not(:last-child){border-right:1px solid #606060}.subject:not(:first-child){padding-left:5px}.subject__now{color:#000!important;font-weight:500}", ""]);
 
 // exports
 

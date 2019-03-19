@@ -164,7 +164,7 @@ export default {
   
   &__now {
     color: black !important;
-    font-weight: 370;
+    font-weight: 500;
   }
 }
 
