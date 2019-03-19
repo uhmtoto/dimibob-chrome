@@ -5321,7 +5321,8 @@ process.umask = function() { return 0; };
       meal: {},
       mealList: __WEBPACK_IMPORTED_MODULE_0__data_json__["mealList"],
       timetable: __WEBPACK_IMPORTED_MODULE_0__data_json__["timetable"],
-      subjectList: __WEBPACK_IMPORTED_MODULE_0__data_json__["subjectList"]
+      subjectList: __WEBPACK_IMPORTED_MODULE_0__data_json__["subjectList"],
+      pending: false
     };
   },
 
@@ -5341,7 +5342,7 @@ process.umask = function() { return 0; };
       return this.moment().day() - 1;
     },
     nextClass() {
-      const time = Number(this.moment().format('hmm'));
+      const time = Number(this.moment().format('HHMM'));
       const result = __WEBPACK_IMPORTED_MODULE_0__data_json__["classTime"].findIndex(data => {
         return time < data;
       });
@@ -5350,15 +5351,33 @@ process.umask = function() { return 0; };
     }
   },
 
-  async created() {
-    const date = this.moment().format('YYYYMMDD');
+  methods: {
+    async getMealData() {
+      const date = this.moment().format('YYYYMMDD');
+      var mealData;
 
-    await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`).then(result => {
-      this.meal = result.data;
+      if (localStorage.meal) return JSON.parse(localStorage.meal);
+
+      await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`).then(result => {
+        mealData = result.data;
+
+        Object.keys(mealData).forEach(key => {
+          mealData[key] = mealData[key].replace(/\//gi, ', ');
+        });
+
+        localStorage.meal = JSON.stringify(mealData);
+      });
+
+      return mealData;
+    }
+  },
+
+  async created() {
+    this.pending = true;
+    await this.getMealData().then(result => {
+      this.meal = result;
     });
-    Object.keys(this.meal).forEach(key => {
-      this.meal[key] = this.meal[key].replace(/\//gi, ', ');
-    });
+    this.pending = false;
   }
 });
 
@@ -30058,7 +30077,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(5);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2b51caee_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_415b5327_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
 function injectStyle (ssrContext) {
   __webpack_require__(143)
 }
@@ -30078,7 +30097,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2b51caee_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_415b5327_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -30099,7 +30118,7 @@ var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(146)("21d06696", content, true, {});
+var update = __webpack_require__(146)("4e81d9f2", content, true, {});
 
 /***/ }),
 /* 144 */
@@ -30587,7 +30606,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }},[_c('div',{class:{
         'meal__title': true,
         'meal__title__now': index === _vm.nextMealKind
-      }},[_vm._v("\n      "+_vm._s(kind)+"\n    ")]),_vm._v("\n    "+_vm._s(_vm.indexedMeal[index] ? _vm.indexedMeal[index] : '급식 정보가 없습니다')+"\n  ")])})],2)}
+      }},[_vm._v("\n      "+_vm._s(kind)+"\n    ")]),_vm._v(" "),(_vm.pending)?_c('span',[_vm._v("\n      급식 정보를 불러오는 중 입니다\n    ")]):_c('span',[_vm._v("\n      "+_vm._s(_vm.indexedMeal[index] ? _vm.indexedMeal[index] : '급식 정보가 없습니다')+"\n    ")])])})],2)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
