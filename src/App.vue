@@ -31,7 +31,7 @@ export default {
       return this.moment().day() - 1
     },
     nextClass () {
-      const time = Number(this.moment().format('HHMM'))
+      const time = Number(this.moment().format('hmm'))
       const result = classTime.findIndex(data => {
         return time < data
       })
@@ -76,6 +76,7 @@ export default {
         }"
         :key="index"
       >
+        {{ index + 1}}
         {{ subjectList[data] }}
       </span>
     </div>

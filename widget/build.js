@@ -5321,7 +5321,7 @@ process.umask = function() { return 0; };
       meal: {},
       mealList: __WEBPACK_IMPORTED_MODULE_0__data_json__["mealList"],
       timetable: __WEBPACK_IMPORTED_MODULE_0__data_json__["timetable"],
-      subject: __WEBPACK_IMPORTED_MODULE_0__data_json__["subject"]
+      subjectList: __WEBPACK_IMPORTED_MODULE_0__data_json__["subjectList"]
     };
   },
 
@@ -5341,7 +5341,7 @@ process.umask = function() { return 0; };
       return this.moment().day() - 1;
     },
     nextClass() {
-      const time = Number(this.moment().format('HHMM'));
+      const time = Number(this.moment().format('hmm'));
       const result = __WEBPACK_IMPORTED_MODULE_0__data_json__["classTime"].findIndex(data => {
         return time < data;
       });
@@ -30058,7 +30058,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(5);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_402f1b70_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2b51caee_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
 function injectStyle (ssrContext) {
   __webpack_require__(143)
 }
@@ -30078,7 +30078,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_402f1b70_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2b51caee_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -30099,7 +30099,7 @@ var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(146)("454bec65", content, true, {});
+var update = __webpack_require__(146)("21d06696", content, true, {});
 
 /***/ }),
 /* 144 */
@@ -30571,7 +30571,7 @@ module.exports = function normalizeComponent (
 /* 149 */
 /***/ (function(module, exports) {
 
-module.exports = {"mealTime":[8,14,20],"classTime":[950,1050,1150,1250,1440,1540,1640],"mealList":["아침","점심","저녁"],"timetable":[["CA","HI","MU","PR","KO","SC","MA"],["SC","SO","KO","PE","PR","MA","MU"],["EN","SO","SC","HI","CL","CH"],["EN","HI","KO","PE","CA","DR","PR"],["CA","MA","EN","DR","SO","PR","MU"]],"subject":{"KO":"국어","HI":"역사","MU":"음악","PR":"프로그래밍","SC":"과학","MA":"수학","SO":"사회","EN":"영어","CH":"창체","DR":"진로","CL":"동아리","CA":"컴일","PE":"체육"}}
+module.exports = {"mealTime":[8,14,20],"classTime":[950,1050,1150,1250,1440,1540,1640],"mealList":["아침","점심","저녁"],"subjectList":{"KO":"국어","HI":"역사","MU":"음악","PR":"프로그래밍","SC":"과학","MA":"수학","SO":"사회","EN":"영어","CH":"창체","DR":"진로","CL":"동아리","CA":"컴일","PE":"체육"},"timetable":[["CA","HI","MU","PR","KO","SC","MA"],["SC","SO","KO","PE","PR","MA","MU"],["EN","SO","SC","HI","CL","CH"],["EN","HI","KO","PE","CA","DR","PR"],["CA","MA","EN","DR","SO","PR","MU"]]}
 
 /***/ }),
 /* 150 */
@@ -30581,7 +30581,7 @@ module.exports = {"mealTime":[8,14,20],"classTime":[950,1050,1150,1250,1440,1540
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container",attrs:{"id":"app"}},[_c('h2',{staticClass:"title"},[_vm._v("\n    "+_vm._s(((_vm.moment().format('MM월 DD일')) + "의 디미고 1학년 5반!"))+"\n  ")]),_vm._v(" "),_c('div',{staticClass:"timetable"},_vm._l((_vm.timetable[_vm.todayDay]),function(data,index){return _c('span',{key:index,class:{
         'subject': true,
         'subject__now': index === _vm.nextClass
-      }},[_vm._v("\n      "+_vm._s(_vm.subject[data])+"\n    ")])}),0),_vm._v(" "),_vm._l((_vm.mealList),function(kind,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(index >= _vm.nextMealKind),expression:"index >= nextMealKind"}],key:kind,class:{
+      }},[_vm._v("\n      "+_vm._s(index + 1)+"\n      "+_vm._s(_vm.subjectList[data])+"\n    ")])}),0),_vm._v(" "),_vm._l((_vm.mealList),function(kind,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(index >= _vm.nextMealKind),expression:"index >= nextMealKind"}],key:kind,class:{
       'meal': true,
       'meal__now': index === _vm.nextMealKind
     }},[_c('div',{class:{
