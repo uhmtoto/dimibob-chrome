@@ -43,22 +43,25 @@ export default {
 
   methods: {
     async getMealData () {
-      const date = this.moment().format('YYYYMMDD')
-      var mealData
+      const moment = this.moment()
 
-      if (localStorage.meal) return JSON.parse(localStorage.meal)
+      try {
+        var mealData = JSON.parse(localStorage.meal)
+        if (mealData.date === moment.format('YYYY-MM-DD')) {
+          return JSON.parse(localStorage.meal)
+        }
+      } catch (error) {
+        await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${moment.format('YYYYMMDD')}`)
+          .then(result => {
+            mealData = result.data
 
-      await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`)
-        .then(result => {
-          mealData = result.data
+            Object.keys(mealData).forEach(key => {
+              mealData[key] = mealData[key].replace(/\//gi, ', ')
+            })
 
-          Object.keys(mealData).forEach(key => {
-            mealData[key] = mealData[key].replace(/\//gi, ', ')
+            localStorage.meal = JSON.stringify(mealData)
           })
-
-          localStorage.meal = JSON.stringify(mealData)
-        })
-      
+      }
       return mealData
     }
   },
@@ -107,7 +110,6 @@ export default {
       }"
       :key="kind"
       v-for="(kind, index) in mealList"
-      v-show="index >= nextMealKind"
     >
       <div
         :class="{
@@ -132,7 +134,7 @@ export default {
 </template>
 
 <style lang="scss">
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url('http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
 
 #app {
   font-family: 'Spoqa Han Sans', 'Spoqa Han Sans KR', 'Sans-serif';
@@ -149,13 +151,15 @@ export default {
 }
 
 .title {
-  font-weight: 400;
+  font-size: 120%;
+  font-weight: 365;
 }
 
 .meal {
   color: #606060;
   word-break: keep-all;
-  font-weight: 350;
+  font-weight: 330;
+
   &:not(:last-child) {
     margin-bottom: 10px;
   }
@@ -166,9 +170,8 @@ export default {
   }
 
   &__title {
-    
     &__now {
-      font-weight: 400;
+      font-weight: 500;
     }
   }
 }
