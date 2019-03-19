@@ -9,7 +9,8 @@ export default {
       meal: {},
       mealList,
       timetable,
-      subjectList
+      subjectList,
+      pending: false
     }
   },
 
@@ -31,7 +32,7 @@ export default {
       return this.moment().day() - 1
     },
     nextClass () {
-      const time = Number(this.moment().format('hmm'))
+      const time = Number(this.moment().format('HHMM'))
       const result = classTime.findIndex(data => {
         return time < data
       })
@@ -40,16 +41,34 @@ export default {
     }
   },
 
+  methods: {
+    async getMealData () {
+      const date = this.moment().format('YYYYMMDD')
+      var mealData
+
+      if (localStorage.meal) return JSON.parse(localStorage.meal)
+
+      await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`)
+        .then(result => {
+          mealData = result.data
+
+          Object.keys(mealData).forEach(key => {
+            mealData[key] = mealData[key].replace(/\//gi, ', ')
+          })
+
+          localStorage.meal = JSON.stringify(mealData)
+        })
+      
+      return mealData
+    }
+  },
+
   async created() {
-    const date = this.moment().format('YYYYMMDD')
-    
-    await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${date}`)
-      .then(result => {
-        this.meal = result.data
-      })
-    Object.keys(this.meal).forEach(key => {
-      this.meal[key] = this.meal[key].replace(/\//gi, ', ')
+    this.pending = true
+    await this.getMealData().then(result => {
+      this.meal = result
     })
+    this.pending = false
   }
 }
 </script>
@@ -76,7 +95,7 @@ export default {
         }"
         :key="index"
       >
-        {{ index + 1}}
+        {{ index + 1 }}
         {{ subjectList[data] }}
       </span>
     </div>
@@ -98,7 +117,16 @@ export default {
       >
         {{ kind }}
       </div>
-      {{ indexedMeal[index] ? indexedMeal[index] : '급식 정보가 없습니다' }}
+      <span
+        v-if="pending"
+      >
+        급식 정보를 불러오는 중 입니다
+      </span>
+      <span
+        v-else
+      >
+        {{ indexedMeal[index] ? indexedMeal[index] : '급식 정보가 없습니다' }}
+      </span>
     </div>
   </div>
 </template>
