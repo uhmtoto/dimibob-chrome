@@ -47,8 +47,8 @@ export default {
 
       try {
         var mealData = JSON.parse(localStorage.meal)
-        if (mealData.date === moment.format('YYYY-MM-DD')) {
-          return JSON.parse(localStorage.meal)
+        if (mealData.date !== moment.format('YYYY-MM-DD')) {
+          throw "Data need to be updated!"
         }
       } catch (error) {
         await this.$api.get(`https://dev-api.dimigo.in/dimibobs/${moment.format('YYYYMMDD')}`)
