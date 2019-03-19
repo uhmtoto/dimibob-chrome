@@ -9,6 +9,7 @@
     "default_popup": "index.html"
   },
   "permissions": [
-    "https://*/*"
+    "https://*/*",
+    "storage"
   ]
 }
