@@ -1,5 +1,5 @@
 <script>
-import { mealList, mealTime, timetable, classTime, subjectList } from './data.json'
+import { mealList, mealTime, timetable, classTime, subjectList, days } from './data.json'
 
 export default {
   name: 'app',
@@ -7,6 +7,7 @@ export default {
   data () {
     return {
       meal: {},
+      days,
       mealList,
       timetable,
       subjectList,
@@ -21,23 +22,21 @@ export default {
         this.meal.dinner]
     },
     nextMealKind () {
-      const hour = Number(this.moment().format('HH'))
-      const result = mealTime.findIndex(data => {
-        return hour < data
+      const time = Number(this.moment().format('HHmm'))
+
+      return mealTime.findIndex(data => {
+        return time < data
       })
-      
-      return result === -1 ? mealTime.length - 1 : result
     },
     todayDay () {
       return this.moment().day() - 1
     },
     nextClass () {
-      const time = Number(this.moment().format('HHMM'))
-      const result = classTime.findIndex(data => {
+      const time = Number(this.moment().format('HHmm'))
+
+      return classTime.findIndex(data => {
         return time < data
       })
-      
-      return result === -1 ? classTime.length - 1 : result
     }
   },
 
@@ -61,8 +60,27 @@ export default {
 
             localStorage.meal = JSON.stringify(mealData)
           })
+          .catch(error => {
+            mealData = {
+              'breakfast': '',
+              'lunch': '',
+              'dinner': '',
+              'date': moment.format('YYYY-MM-DD')
+            }
+            localStorage.meal = JSON.stringify(mealData)
+          })
       }
       return mealData
+    },
+
+    getImage (keyword) {
+      return this.$api.get(`https://dapi.kakao.com/v2/search/image?size=1&query=${keyword}`, {
+        headers: {
+          Authorization: `KakaoAK a2318acc706a20288d9a4406493d6e75`
+        }
+      })
+        .then(result => result.data.documents[0].image_url)
+        .catch(() => '')
     }
   },
 
@@ -84,10 +102,11 @@ export default {
     <h2
       class="title"
     >
-      {{ `${moment().format('MM월 DD일')}의 디미고 1학년 5반!` }}
+      {{ `${moment().format('MM월 DD일')} ${days[todayDay]}의 디미고 1학년 5반!` }}
     </h2>
 
     <div
+      v-if="timetable[todayDay].length"
       class="timetable"
     >
       <span
@@ -100,6 +119,17 @@ export default {
       >
         {{ index + 1 }}
         {{ subjectList[data] }}
+      </span>
+    </div>
+
+    <div
+      v-else
+      class="timetable"
+    >
+      <span
+        class="subject"
+      >
+       시간표 정보가 없습니다
       </span>
     </div>
 
@@ -198,6 +228,10 @@ export default {
     color: black !important;
     font-weight: 500;
   }
+}
+
+a {
+  text-decoration: none;
 }
 
 </style>
