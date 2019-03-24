@@ -5339,7 +5339,7 @@ process.umask = function() { return 0; };
       });
     },
     todayDay() {
-      return this.moment().day() - 1;
+      return this.moment().day();
     },
     nextClass() {
       const time = Number(this.moment().format('HHmm'));
@@ -30095,7 +30095,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(5);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_25ab1e45_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_39a40032_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(150);
 function injectStyle (ssrContext) {
   __webpack_require__(143)
 }
@@ -30115,7 +30115,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_25ab1e45_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_39a40032_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -30136,7 +30136,7 @@ var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(146)("4b3b0534", content, true, {});
+var update = __webpack_require__(146)("7f18a5c7", content, true, {});
 
 /***/ }),
 /* 144 */
@@ -30608,7 +30608,7 @@ module.exports = function normalizeComponent (
 /* 149 */
 /***/ (function(module, exports) {
 
-module.exports = {"mealTime":[810,1350,1950],"classTime":[950,1050,1150,1250,1440,1540,1640],"mealList":["아침","점심","저녁"],"subjectList":{"KO":"국어","HI":"역사","MU":"음악","PR":"프로그래밍","SC":"과학","MA":"수학","SO":"사회","EN":"영어","CH":"창체","DR":"진로","CL":"동아리","CA":"컴일","PE":"체육"},"timetable":[["CA","HI","MU","PR","KO","SC","MA"],["SC","SO","KO","PE","PR","MA","MU"],["EN","SO","SC","HI","CL","CH"],["EN","HI","KO","PE","CA","DR","PR"],["CA","MA","EN","DR","SO","PR","MU"],[],[]],"days":["월요일","화요일","수요일","목요일","금요일","토요일","일요일"]}
+module.exports = {"mealTime":[810,1350,1950],"classTime":[950,1050,1150,1250,1440,1540,1640],"mealList":["아침","점심","저녁"],"subjectList":{"KO":"국어","HI":"역사","MU":"음악","PR":"프로그래밍","SC":"과학","MA":"수학","SO":"사회","EN":"영어","CH":"창체","DR":"진로","CL":"동아리","CA":"컴일","PE":"체육"},"timetable":[[],["CA","HI","MU","PR","KO","SC","MA"],["SC","SO","KO","PE","PR","MA","MU"],["EN","SO","SC","HI","CL","CH"],["EN","HI","KO","PE","CA","DR","PR"],["CA","MA","EN","DR","SO","PR","MU"],[]],"days":["월요일","화요일","수요일","목요일","금요일","토요일","일요일"]}
 
 /***/ }),
 /* 150 */

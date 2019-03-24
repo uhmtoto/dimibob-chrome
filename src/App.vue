@@ -29,7 +29,7 @@ export default {
       })
     },
     todayDay () {
-      return this.moment().day() - 1
+      return this.moment().day()
     },
     nextClass () {
       const time = Number(this.moment().format('HHmm'))

@@ -34,12 +34,12 @@
     "PE": "체육"
   },
   "timetable": [
+    [],
     ["CA", "HI", "MU", "PR", "KO", "SC", "MA"],
     ["SC", "SO", "KO", "PE", "PR", "MA", "MU"],
     ["EN", "SO", "SC", "HI", "CL", "CH"],
     ["EN", "HI", "KO", "PE", "CA", "DR", "PR"],
     ["CA", "MA", "EN", "DR", "SO", "PR", "MU"],
-    [],
     []
   ],
   "days": [
